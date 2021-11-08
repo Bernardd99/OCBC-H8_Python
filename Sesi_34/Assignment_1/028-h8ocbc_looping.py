@@ -12,4 +12,7 @@ numbers.sort()
 for x in numbers:
     if x < 919:
         print (x)
-print('done')
+        continue
+    else:
+        print('Done')
+        break
