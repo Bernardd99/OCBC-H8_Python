@@ -7,12 +7,11 @@ numbers = [
     566, 826, 248, 866, 950, 626, 949
 ]
 
-numbers.sort()
+# numbers.sort()
 
 for x in numbers:
-    if x < 919:
+    if x % 2 == 0:
         print (x)
-        continue
-    else:
+    if x == 918:
         print('Done')
-        break
+        break    
