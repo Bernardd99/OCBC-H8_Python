@@ -1,5 +1,11 @@
+# Fungsi untuk soal nomor 1
 def celsiusKelvinConvert(temp):
-    '''1. Convert Celsius to and from Kelvin'''
+    '''
+    1. Convert Celsius to and from Kelvin
+    :param temp: Input temperature as temp | string
+  
+    :return: print : Print the result of conversion | string
+    '''
     degree = float(temp[:-1])
     tempUnit = temp[-1]
     if tempUnit.lower() == 'c':
@@ -11,34 +17,45 @@ def celsiusKelvinConvert(temp):
         celsius = float(round(degree - 273, 15))
         print('Kelvin to Celsius : ', celsius, convertUnit)
 
-
+# Fungsi untuk soal nomor 2
 def toFahrenheit(temp):
-    '''2. Convert from Celsius/Kelvin to Fahrenheit'''
+    '''
+    2. Convert from Celsius/Kelvin to Fahrenheit
+    :param temp: Input temperature as temp | string
+  
+    :return: print : Print the result of conversion | string
+    '''
     degree = float(temp[:-1])
     tempUnit = temp[-1]
     convertUnit = 'Fahrenheit'
     if tempUnit == 'c':
         fromCelcius = float(round((degree * 9 / 5) + 32))
-        print('Celsius to Fahrenheit', fromCelcius, convertUnit)
+        print('Celsius to Fahrenheit : ', fromCelcius, convertUnit)
     else:
         fromKelvin = float(round((degree - 273.15) * 9 / 5 + 32))
-        print('Kelvin to Fahrenheit', fromKelvin, convertUnit)
+        print('Kelvin to Fahrenheit : ', fromKelvin, convertUnit)
 
-
+# Fungsi untuk soal nomor 3 
 def fromFahrenheit(temp, convertTo):
-    '''3. Convert from Fahrenheit to Celsius/Kelvin'''
+    '''
+    3. Convert from Fahrenheit to Celsius/Kelvin
+    :param temp: Input temperature as temp | string
+    :param convertTo: Input the temperature unit that user want to convert to as convertTo | string
+
+    :return: print : Print the result of conversion | string
+    '''
     degree = float(temp[:-1])
     tempUnit = convertTo[-1]
     if tempUnit == 'c':
         convertUnit = 'Celsius'
         celsius = float(round((degree - 32) * 5 / 9))
-        print('Fahrenheit to Celsius', celsius, convertUnit)
+        print('Fahrenheit to Celsius : ', celsius, convertUnit)
     else:
         convertUnit = 'Kelvin'
         kelvin = float(round((degree - 32) * 5 / 9 + 273.15))
-        print('Fahrenheit to Kelvin', kelvin, convertUnit)
+        print('Fahrenheit to Kelvin : ', kelvin, convertUnit)
 
-
+# Fungsi Tambahan untuk melakukan segala macam konversi suhu / temperatur
 def convert(temp, tempUnit, convertTo):
     '''Main Function to convert all type of conversion'''
     if (tempUnit == 'c' or tempUnit == 'k') and convertTo != 'f':
@@ -50,7 +67,7 @@ def convert(temp, tempUnit, convertTo):
     else:
         print ('Error')
 
-
+# melakukan proses input dari user yang juga disertai beberapa validasi
 loop = True
 loop2 = True
 while loop == True:
