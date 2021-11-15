@@ -8,3 +8,5 @@
 */.ipynb_checkpoints/*
 
 pyvenv.cfg
+
+__pycache__
