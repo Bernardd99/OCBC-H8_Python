@@ -14,7 +14,7 @@ def read_all():
     :return:        json string of list of director
     """
      # Create the list of people from our data
-    director = Director.query.order_by(Director.id).limit(50)
+    director = Director.query.order_by(Director.id).limit(10)
 
     # Serialize the data for the response
     director_schema = DirectorSchema(many=True)
@@ -137,3 +137,31 @@ def delete(id):
     # Otherwise, nope, didn't find that person
     else:
         abort(404, f"Director not found for Id: {id}")
+
+def read_all_directing():
+    """
+    This function responds to a request for /api/director/directing
+    with the complete lists of director in Directing department
+    :return:        json string of list of director in Directing department
+    """
+     # Create the list of people from our data
+    director = Director.query.filter(Director.department == "Directing").order_by(Director.id).limit(5)
+
+    # Serialize the data for the response
+    director_schema = DirectorSchema(many=True)
+    data = director_schema.dump(director)
+    return data
+
+def read_all_gender():
+    """
+    This function responds to a request for /api/director/gender
+    with the complete lists of director with 2 as a gender
+    :return:        json string of list of director with 2 as a gender
+    """
+     # Create the list of people from our data
+    director = Director.query.filter(Director.gender == 2).order_by(Director.id).limit(5)
+
+    # Serialize the data for the response
+    director_schema = DirectorSchema(many=True)
+    data = director_schema.dump(director)
+    return data

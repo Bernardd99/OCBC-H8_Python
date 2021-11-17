@@ -9,22 +9,22 @@ from models import Director, MovieSchema, Movie
 
 def read_all():
     """
-    This function responds to a request for /api/director
-    with the complete lists of director
-    :return:        json string of list of director
+    This function responds to a request for /api/movie
+    with the complete lists of movie
+    :return:        json string of list of movie
     """
-     # Create the list of people from our data
-    director = Movie.query.order_by(Movie.id).limit(10)
+     # Create the list of movie from our data
+    movie = Movie.query.order_by(Movie.id).limit(10)
 
     # Serialize the data for the response
     movie_schema = MovieSchema(many=True)
-    data = movie_schema.dump(director)
+    data = movie_schema.dump(movie)
     return data
 
 def read_one(director_id, movie_id):
     """
     This function responds to a request for
-    /api/people/{director_id}/movie/{movie_id}
+    /api/director/{director_id}/movie/{movie_id}
     with one matching movie for the associated person
     :param director_id:       Id of director the movie is related to
     :param movie_id:         Id of the movie
@@ -50,7 +50,7 @@ def read_one(director_id, movie_id):
 
 def create(director_id, movie):
     """
-    This function creates a new movie related to the passed in director id.
+    This function creates a new movie related to the passed id in director id.
     :param director_id:       Id of the director the movie is related to
     :param movie:            The JSON containing the movie data
     :return:                201 on success
@@ -77,11 +77,11 @@ def create(director_id, movie):
 
 def update(director_id, movie_id, movie):
     """
-    This function updates an existing movie related to the passed in
+    This function updates an existing movie related to the passed id in
     person id.
     :param director_id:       Id of the director the movie is related to
     :param movie_id:         Id of the movie to update
-    :param content:            The JSON containing the movie data
+    :param movie:            The JSON containing the movie data
     :return:                200 on success
     """
     update_movie = (
@@ -140,3 +140,31 @@ def delete(director_id, movie_id):
     # Otherwise, nope, didn't find that movie
     else:
         abort(404, f"Movie not found for Id: {movie_id}")
+
+def read_all_budget():
+    """
+    This function responds to a request for /api/movie/budget
+    with the complete lists of director
+    :return:        json string of list of movie with budget more than 275000000
+    """
+     # Create the list of movie from our data
+    movie = Movie.query.filter(Movie.budget > 275000000).order_by(Movie.id).limit(5)
+
+    # Serialize the data for the response
+    movie_schema = MovieSchema(many=True)
+    data = movie_schema.dump(movie)
+    return data
+
+def read_all_popularity():
+    """
+    This function responds to a request for /api/movie/popularity
+    with the complete lists of director
+    :return:        json string of list of movie with popularity more than 125
+    """
+     # Create the list of movie from our data
+    movie = Movie.query.filter(Movie.popularity > 125).order_by(Movie.id).limit(5)
+
+    # Serialize the data for the response
+    movie_schema = MovieSchema(many=True)
+    data = movie_schema.dump(movie)
+    return data
