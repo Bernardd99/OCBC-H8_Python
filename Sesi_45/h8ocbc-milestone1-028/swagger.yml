@@ -874,3 +874,57 @@ paths:
                 director_id:
                   type: integer
                   description: Id of director this movie is associated with              
+
+  /movie/topvote:
+    get:
+      operationId: movie.read_top_vote
+      tags:
+        - Movie
+      summary: Read the entire set of movie with highest vote average
+      description: Read the entire set of movie with highest vote average
+      responses:
+        200:
+          description: Successfully read movie set operation
+          schema:
+            type: array
+            items:
+              properties:
+                id:
+                  type: integer
+                  description: Id of the movie
+                original_title:
+                  type: string
+                  description: Original Title of the movie
+                budget:
+                  type: integer
+                  description: Budget of the movie
+                popularity:
+                  type: integer
+                  description: Popularity of the movie
+                release_date:
+                  type: string
+                  description: Release Date of the movie
+                revenue:
+                  type: integer
+                  description: Revenue of the movie
+                title:
+                  type: string
+                  description: Title of the movie
+                vote_average:
+                  type: number
+                  description: Vote Average of the movie
+                vote_count:
+                  type: integer 
+                  description: Vote Count of the movie
+                overview:
+                  type: string
+                  description: Overview of the movie
+                tagline:
+                  type: string
+                  description: Tagline of the movie
+                uid:
+                  type: integer
+                  description: Uid of the movie
+                director_id:
+                  type: integer
+                  description: Id of director this movie is associated with       

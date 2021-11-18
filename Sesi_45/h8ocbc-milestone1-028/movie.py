@@ -144,7 +144,7 @@ def delete(director_id, movie_id):
 def read_all_budget():
     """
     This function responds to a request for /api/movie/budget
-    with the complete lists of director
+    with the complete lists of movie with budget more than 275000000
     :return:        json string of list of movie with budget more than 275000000
     """
      # Create the list of movie from our data
@@ -158,11 +158,25 @@ def read_all_budget():
 def read_all_popularity():
     """
     This function responds to a request for /api/movie/popularity
-    with the complete lists of director
+    with the complete lists of movie with popularity more than 125
     :return:        json string of list of movie with popularity more than 125
     """
      # Create the list of movie from our data
     movie = Movie.query.filter(Movie.popularity > 125).order_by(Movie.id).limit(5)
+
+    # Serialize the data for the response
+    movie_schema = MovieSchema(many=True)
+    data = movie_schema.dump(movie)
+    return data
+
+def read_top_vote():
+    """
+    This function responds to a request for /api/movie/topvote
+    with the complete lists of movie with highest vote average
+    :return:        json string of list of movie with highest vote average
+    """
+     # Create the list of movie from our data
+    movie = Movie.query.order_by(Movie.vote_average.desc()).limit(5)
 
     # Serialize the data for the response
     movie_schema = MovieSchema(many=True)
