@@ -141,28 +141,34 @@ def delete(director_id, movie_id):
     else:
         abort(404, f"Movie not found for Id: {movie_id}")
 
-def read_all_budget():
+def read_all_budget(budget):
     """
-    This function responds to a request for /api/movie/budget
-    with the complete lists of movie with budget more than 275000000
-    :return:        json string of list of movie with budget more than 275000000
+    This function responds to a request for /api/movie/budget/{budget}
+    with the complete lists of movie with budget more than the budget inputted
+    :return:        json string of list of movie with budget more than the budget inputted
     """
      # Create the list of movie from our data
-    movie = Movie.query.filter(Movie.budget > 275000000).order_by(Movie.id).limit(5)
+    movie = Movie.query.filter(Movie.budget >= budget).order_by(Movie.id).limit(5)
+
+    if movie.first() is None:
+        abort(404, f"There is no movie with budget above {budget}")
 
     # Serialize the data for the response
     movie_schema = MovieSchema(many=True)
     data = movie_schema.dump(movie)
     return data
 
-def read_all_popularity():
+def read_all_popularity(popularity):
     """
-    This function responds to a request for /api/movie/popularity
-    with the complete lists of movie with popularity more than 125
-    :return:        json string of list of movie with popularity more than 125
+    This function responds to a request for /api/movie/popularity/{popularity}
+    with the complete lists of movie with popularity more than the popularity inputted
+    :return:        json string of list of movie with popularity than the popularity inputted
     """
      # Create the list of movie from our data
-    movie = Movie.query.filter(Movie.popularity > 125).order_by(Movie.id).limit(5)
+    movie = Movie.query.filter(Movie.popularity >= popularity).order_by(Movie.id).limit(5)
+
+    if movie.first() is None:
+        abort(404, f"There is no movie with popularity above {popularity}")
 
     # Serialize the data for the response
     movie_schema = MovieSchema(many=True)

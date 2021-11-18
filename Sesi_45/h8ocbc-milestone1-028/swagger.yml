@@ -767,13 +767,19 @@ paths:
         200:
           description: Successfully deleted a movie
 
-  /movie/budget:
+  /movie/budget/{budget}:
     get:
       operationId: movie.read_all_budget
       tags:
         - Movie
-      summary: Read the entire set of movie with budget more than 275.000.000
-      description: Read the entire set of movie with budget more than 275.000.000
+      summary: Read the entire set of movie with budget more than the budget inputted
+      description: Read the entire set of movie with budget more than the budget inputted
+      parameters:
+        - name: budget
+          in: path
+          description: budget of the movie
+          type: integer
+          required: True
       responses:
         200:
           description: Successfully read movie set operation
@@ -821,13 +827,19 @@ paths:
                   type: integer
                   description: Id of director this movie is associated with
     
-  /movie/popularity:
+  /movie/popularity/{popularity}:
     get:
       operationId: movie.read_all_popularity
       tags:
         - Movie
-      summary: Read the entire set of movie with popularity more than 125
-      description: Read the entire set of movie with popularity more than 125
+      summary: Read the entire set of movie with popularity more than the popularity inputted
+      description: Read the entire set of movie with popularity more than the popularity inputted
+      parameters:
+        - name: popularity
+          in: path
+          description: popularity of the movie
+          type: integer
+          required: True
       responses:
         200:
           description: Successfully read movie set operation
