@@ -772,8 +772,8 @@ paths:
       operationId: movie.read_all_budget
       tags:
         - Movie
-      summary: Read the entire set of movie with budget more than the budget inputted
-      description: Read the entire set of movie with budget more than the budget inputted
+      summary: Read the entire set of movie with budget equal to or more than the budget inputted
+      description: Read the entire set of movie with budget equal to or more than the budget inputted
       parameters:
         - name: budget
           in: path
@@ -832,8 +832,8 @@ paths:
       operationId: movie.read_all_popularity
       tags:
         - Movie
-      summary: Read the entire set of movie with popularity more than the popularity inputted
-      description: Read the entire set of movie with popularity more than the popularity inputted
+      summary: Read the entire set of movie with popularity equal to or more than the popularity inputted
+      description: Read the entire set of movie with popularity equal to or more than the popularity inputted
       parameters:
         - name: popularity
           in: path

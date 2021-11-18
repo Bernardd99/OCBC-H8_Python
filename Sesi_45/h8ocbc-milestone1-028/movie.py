@@ -144,8 +144,8 @@ def delete(director_id, movie_id):
 def read_all_budget(budget):
     """
     This function responds to a request for /api/movie/budget/{budget}
-    with the complete lists of movie with budget more than the budget inputted
-    :return:        json string of list of movie with budget more than the budget inputted
+    with the complete lists of movie with budget equal to or more than the budget inputted
+    :return:        json string of list of movie with budget equal to or more than the budget inputted
     """
      # Create the list of movie from our data
     movie = Movie.query.filter(Movie.budget >= budget).order_by(Movie.id).limit(5)
@@ -161,8 +161,8 @@ def read_all_budget(budget):
 def read_all_popularity(popularity):
     """
     This function responds to a request for /api/movie/popularity/{popularity}
-    with the complete lists of movie with popularity more than the popularity inputted
-    :return:        json string of list of movie with popularity than the popularity inputted
+    with the complete lists of movie with popularity equal to or more than the popularity inputted
+    :return:        json string of list of movie with popularity equal to or more than the popularity inputted
     """
      # Create the list of movie from our data
     movie = Movie.query.filter(Movie.popularity >= popularity).order_by(Movie.id).limit(5)
